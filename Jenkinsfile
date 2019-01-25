@@ -1,23 +1,13 @@
-pipeline{
- agent any
- environment {
-    ANYPOINT = credentials('ANYPOINT')
- }
- stages {
- 	stage ('Build'){
- 		steps {
- 			withMaven(maven:'maven'){
- 				bat 'mvn clean install'
- 			}
- 		}
- 	}
- 	stage ('Deploy'){
- 		steps {
- 			withMaven(maven:'maven'){
- 				bat 'mvn deploy -P cloudhub -Dmule.version=4.1.5  -Dusername=$ANYPOINT_USR -Dpassword=$ANYPOINT_PSW -Denvironment=Sandbox -DmuleDeploy'
- 			}
- 		}
- 	}
- }
-
+pipeline {
+  agent any
+  stages {
+    stage('Deploy CloudHub') {
+      environment {
+        ANYPOINT_CREDENTIALS = credentials('ANYPOINT')
+      }
+      steps {
+        bat 'mvn deploy -P cloudhub -Dmule.version=4.1.5 -Danypoint.username=${ANYPOINT_CREDENTIALS_USR} -Danypoint.password=${ANYPOINT_CREDENTIALS_PSW}'
+      }
+    }
+  }
 }
