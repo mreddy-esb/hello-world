@@ -7,14 +7,14 @@ pipeline{
  	stage ('Build'){
  		steps {
  			withMaven(maven:'maven'){
- 				sh 'mvn pom.xml clean install'
+ 				bat 'mvn pom.xml clean install'
  			}
  		}
  	}
  	stage ('Deploy'){
  		steps {
  			withMaven(maven:'maven'){
- 				sh 'mvn -f mule-jenkins-pipeline/pom.xml package deploy  -Dusername=$ANYPOINT_USR -Dpassword=$ANYPOINT_PSW -Denvironment=Dsandbox -DmuleDeploy'
+ 				bat 'mvn -f mule-jenkins-pipeline/pom.xml package deploy  -Dusername=$ANYPOINT_USR -Dpassword=$ANYPOINT_PSW -Denvironment=Dsandbox -DmuleDeploy'
  			}
  		}
  	}
