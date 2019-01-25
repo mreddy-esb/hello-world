@@ -14,7 +14,7 @@ pipeline{
  	stage ('Deploy'){
  		steps {
  			withMaven(maven:'maven'){
- 				bat 'mvn -f package deploy  -Dusername=$ANYPOINT_USR -Dpassword=$ANYPOINT_PSW -Denvironment=Sandbox -DmuleDeploy'
+ 				bat 'mvn deploy -P cloudhub -Dmule.version=4.1.5  -Dusername=$ANYPOINT_USR -Dpassword=$ANYPOINT_PSW -Denvironment=Sandbox -DmuleDeploy'
  			}
  		}
  	}
