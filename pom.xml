@@ -18,6 +18,7 @@
 		<mule.maven.plugin.version>3.1.6</mule.maven.plugin.version>
 		<munit.version>2.1.4</munit.version>
 		<anypoint.uri>https://anypoint.mulesoft.com</anypoint.uri>
+		<cloundhub.env>Sandbox</cloundhub.env>
 		<build.number>0</build.number>
 
 	</properties>
@@ -62,7 +63,7 @@
 
 	<build>
 		<plugins>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
@@ -78,7 +79,7 @@
 
 					</cloudHubDeployment>
 				</configuration>
-			</plugin>
+			</plugin> -->
 
 
 			<plugin>
